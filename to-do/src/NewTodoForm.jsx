@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import './NewTodoForm.css'
+
 const NewTodoForm = ({ addTask }) => {
   const INITIAL_STATE = {
     text: ''
@@ -11,14 +13,19 @@ const NewTodoForm = ({ addTask }) => {
   }
   const handleSubmit = (e) => {
     e.preventDefault();
-    formData.props = {text: formData.text}
-    addTask(formData);
-    setFormData(INITIAL_STATE)
+    if(formData.text.trim() !== ''){
+        formData.props = {text: formData.text}
+        addTask(formData);
+        setFormData(INITIAL_STATE)
+    } else{
+        alert('Please enter a task!')
+    }
+    
   }
 
   return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor="text">Task </label>
+      <label htmlFor="text"></label>
       <input
         id="task"
         type="text"
@@ -27,7 +34,7 @@ const NewTodoForm = ({ addTask }) => {
         value={formData.text}
         onChange={handleChange}
       />
-      <button>Add Task</button>
+      <button className="addTask">Add Task</button>
     </form>
   )
 

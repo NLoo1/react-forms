@@ -17,8 +17,16 @@ const NewBoxForm = ({ addBox }) => {
   }
   const handleSubmit = (e) => {
     e.preventDefault();
-    addBox({ ...formData });
-    setFormData(INITIAL_STATE)
+    if(formData.width.trim() !== '' 
+    && formData.height.trim() !== '' 
+    && formData.backgroundColor.trim() !== '')
+    {
+        addBox({ ...formData });
+        setFormData(INITIAL_STATE)
+    }
+    else{ 
+        alert("Something is wrong")
+    }
   }
 
   return (

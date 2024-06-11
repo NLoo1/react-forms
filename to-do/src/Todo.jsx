@@ -1,8 +1,12 @@
-import { useState } from 'react'
+import './Todo.css'
 
 function Todo({text}) {
   return (
-    <p>{text}</p>
+    <div>
+      <span className="task">{text} </span>
+      <button className="removeTask">X</button>
+    </div>
+    
   )
 }
 
