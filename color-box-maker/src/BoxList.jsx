@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import Box from './Box'
+import NewBoxForm from './NewBoxForm';
+import { v4 as uuidv4 } from 'uuid';
 
 function BoxList({allBoxes}) {
   const [boxes, setBoxes] = useState(allBoxes)
@@ -14,15 +16,18 @@ function BoxList({allBoxes}) {
 
   return (
     <div>
-      {boxes.map((box, index) => (
+      {boxes.map((box => (
         <Box
-          key={index}
+          key={uuidv4()}
           width={box.width}
           height={box.height}
           backgroundColor={box.backgroundColor}
         />
       ))}
+
+      <NewBoxForm />
     </div>
+    
   );
 }
 
