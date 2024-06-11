@@ -1,22 +1,19 @@
-import React, { useState } from 'react'
-import Box from './Box'
+import React, { useState } from 'react';
+import Box from './Box';
 import NewBoxForm from './NewBoxForm';
 import { v4 as uuidv4 } from 'uuid';
+import './BoxList.css'
 
-function BoxList({allBoxes}) {
-  const [boxes, setBoxes] = useState(allBoxes)
+function BoxList({ allBoxes }) {
+  const [boxes, setBoxes] = useState(allBoxes);
 
-  function addBox(box){
-    setBoxes(boxes => [...boxes, box]);
-  }
-
-  function removeBox(box){
-    setBoxes(boxes => boxes.filter(b => b !== box));
+  function addBox(newBox) {
+    setBoxes(boxes => [...boxes, { ...newBox }]);
   }
 
   return (
-    <div>
-      {boxes.map((box => (
+    <div className="boxList">
+      {boxes.map(box => (
         <Box
           key={uuidv4()}
           width={box.width}
@@ -24,13 +21,10 @@ function BoxList({allBoxes}) {
           backgroundColor={box.backgroundColor}
         />
       ))}
-
-      <NewBoxForm />
+      <NewBoxForm addBox={addBox} />
     </div>
-    
   );
 }
-
 
 BoxList.defaultProps = {
   allBoxes: [
@@ -39,4 +33,4 @@ BoxList.defaultProps = {
   ]
 };
 
-export default BoxList
+export default BoxList;
