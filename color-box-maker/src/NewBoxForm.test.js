@@ -5,7 +5,6 @@ import { v4 as uuidv4 } from 'uuid';
 import '@testing-library/jest-dom';
 
 
-// Mock uuidv4 to return a consistent value for each call
 jest.mock('uuid', () => ({
   v4: jest.fn()
 }));
@@ -23,7 +22,6 @@ it("matches snapshot", function () {
 it("can add a new box", function() {
   const { getByLabelText, getByText, queryByTestId } = render(<BoxList />);
 
-  // Initial boxes
   expect(queryByTestId("box-id-0")).toBeInTheDocument();
   expect(queryByTestId("box-id-1")).toBeInTheDocument();
 
@@ -32,12 +30,10 @@ it("can add a new box", function() {
   const backgroundColorInput = getByLabelText("Background Color:");
   const submitBtn = getByText("Add Item");
 
-  // fill out the form
   fireEvent.change(widthInput, { target: { value: "100" } });
   fireEvent.change(heightInput, { target: { value: "100" } });
   fireEvent.change(backgroundColorInput, { target: { value: "red" } });
   fireEvent.click(submitBtn);
 
-  // New box should exist with a new id
   expect(queryByTestId("box-id-2")).toBeInTheDocument();
 });

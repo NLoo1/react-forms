@@ -25,7 +25,7 @@ const NewTodoForm = ({ addTask }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor="text"></label>
+      <label htmlFor="task">Add new to-do</label>
       <input
         id="task"
         type="text"
@@ -34,7 +34,7 @@ const NewTodoForm = ({ addTask }) => {
         value={formData.text}
         onChange={handleChange}
       />
-      <button className="addTask">Add Task</button>
+      <button className="addTask">Add</button>
     </form>
   )
 
