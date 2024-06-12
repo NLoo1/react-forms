@@ -8,3 +8,5 @@ Takes user input that specifies a box's width, height, and background color. Whe
 
 ## Part 2: To-do App
 Simple to-do list that allows users to see, add, edit, and remove to-do tasks. There is a NewTodoForm to add new tasks, a Todo component for each task, TodoList for the entire list, and App to render everything.
+- When testing, run `npm test -- -u` to account for dynamic snapshots.
+
